@@ -75,7 +75,11 @@ class ChannelManager {
 
     // Return the cost (total) of all currently subscribed channels
     totalSubscribedCost = () => {
-
+        let totalCost = 0
+        this.#allSubscriptions.map(x =>
+            totalCost += this.#allChannels.find((f) => f.channel == x).price
+        )
+        return totalCost
     }
 
     // Returns the next subscribed channel (in order).  Suppose you are
