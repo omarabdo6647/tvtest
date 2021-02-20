@@ -88,6 +88,15 @@ class ChannelManager {
     // If there are no currently subscribed channels, this function will throw the exception
     // NoSubscribedChannels.
     nextSubscribedChannel = currentCh => {
+         if (this.#allSubscriptions.length === 0) {
+            throw new Error('NoSubscribedChannels')
+        }
+
+        if (this.#allSubscriptions.indexOf(currentCh) === this.#allSubscriptions.length - 1)
+            return this.#allSubscriptions[0]
+        else
+            return this.#allSubscriptions[this.#allSubscriptions.indexOf(currentCh) + 1]
+        // console.log(this.#allSubscriptions.indexOf(currentCh))
 
     }
 
