@@ -16,8 +16,10 @@ class DuplicateChannelException extends Error {
 
 class ChannelManager {
     #allChannels
+    #allSubscriptions
     constructor() {
         this.#allChannels = []
+        this.#allSubscriptions = []
     }
 
     // Add a new channel to the management system.  If a channel already exists with the
@@ -54,7 +56,12 @@ class ChannelManager {
     // the operation was successful and false if the channel was not already subscribed.
     // No exception is thrown.
     subscribeChannel = chNum => {
-     
+        if (this.#allSubscriptions.includes(chNum))
+            return false
+        else
+            this.#allSubscriptions.push(chNum)
+
+        return true
     }
 
     // Unsubscribe from the channel.  If the channel is not currently subscribed this
@@ -67,7 +74,7 @@ class ChannelManager {
 
     // Return the cost (total) of all currently subscribed channels
     totalSubscribedCost = () => {
-      
+
     }
 
     // Returns the next subscribed channel (in order).  Suppose you are
@@ -76,7 +83,7 @@ class ChannelManager {
     // If there are no currently subscribed channels, this function will throw the exception
     // NoSubscribedChannels.
     nextSubscribedChannel = currentCh => {
-      
+
     }
 
     // Returns the previous subscribed channel (in order).  Suppose you are
@@ -85,7 +92,7 @@ class ChannelManager {
     // If there are no currently subscribed channels, this function will throw the exception
     // NoSubscribedChannels.
     previousSubscribedChannel(currentCh) {
-   
+
 
     }
 
