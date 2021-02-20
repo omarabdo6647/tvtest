@@ -122,3 +122,37 @@ test('Test unsubscribeChannel Function', () => {
     expect(c)
     .toBe(true)
 })
+
+//==========================================================================================
+// countSubcribedChannels
+//==========================================================================================
+test('Test countSubcribedChannels Function', () => {
+    let manager2 = new ChannelManager()
+    manager2.addChannel(new TVChannel(1, 'M+', 1, 'Music'))
+    manager2.addChannel(new TVChannel(2, 'Zee Aflam', 7, 'Movies'))
+    manager2.addChannel(new TVChannel(3, 'Russia Today', 5, 'News'))
+    manager2.addChannel(new TVChannel(4, 'CBC', 3, 'News'))
+    manager2.addChannel(new TVChannel(5, 'Bein', 9, 'Sports'))
+    manager2.subscribeChannel(1)
+    manager2.subscribeChannel(2)
+    manager2.subscribeChannel(3)
+    expect(manager2.countSubcribedChannels())
+        .toBe(3)
+})
+
+//==========================================================================================
+// totalSubscribedCost
+//==========================================================================================
+test('Test totalSubscribedCost Function', () => {
+    let manager2 = new ChannelManager()
+    manager2.addChannel(new TVChannel(1, 'M+', 1, 'Music'))
+    manager2.addChannel(new TVChannel(2, 'Zee Aflam', 7, 'Movies'))
+    manager2.addChannel(new TVChannel(3, 'Russia Today', 5, 'News'))
+    manager2.addChannel(new TVChannel(4, 'CBC', 3, 'News'))
+    manager2.addChannel(new TVChannel(5, 'Bein', 9, 'Sports'))
+    manager2.subscribeChannel(1)
+    manager2.subscribeChannel(2)
+    manager2.subscribeChannel(3)
+    expect(manager2.totalSubscribedCost())
+        .toBe(13)
+})
