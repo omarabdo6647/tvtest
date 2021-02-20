@@ -107,7 +107,13 @@ class ChannelManager {
     // NoSubscribedChannels.
     previousSubscribedChannel(currentCh) {
 
-
+         if (this.#allSubscriptions.length === 0) {
+            throw new Error('NoSubscribedChannels')
+        }
+        if (this.#allSubscriptions.indexOf(currentCh) === 0)
+            return this.#allSubscriptions[this.#allSubscriptions.length - 1]
+        else
+            return this.#allSubscriptions[this.#allSubscriptions.indexOf(currentCh) - 1]
     }
 
 
