@@ -156,3 +156,87 @@ test('Test totalSubscribedCost Function', () => {
     expect(manager2.totalSubscribedCost())
         .toBe(13)
 })
+
+//==========================================================================================
+// nextSubscribedChannel
+//==========================================================================================
+test('Test nextSubscribedChannel Function', () => {
+    let manager2 = new ChannelManager()
+    manager2.addChannel(new TVChannel(1, 'M+', 1, 'Music'))
+    manager2.addChannel(new TVChannel(2, 'Zee Aflam', 7, 'Movies'))
+    manager2.addChannel(new TVChannel(3, 'Russia Today', 5, 'News'))
+    manager2.addChannel(new TVChannel(4, 'CBC', 3, 'News'))
+    manager2.addChannel(new TVChannel(5, 'Bein', 9, 'Sports'))
+    manager2.subscribeChannel(1)
+    manager2.subscribeChannel(2)
+    manager2.subscribeChannel(3)
+    expect(manager2.nextSubscribedChannel(3))
+        .toBe(1)
+})
+test('Test nextSubscribedChannel Function', () => {
+    let manager2 = new ChannelManager()
+    manager2.addChannel(new TVChannel(1, 'M+', 1, 'Music'))
+    manager2.addChannel(new TVChannel(2, 'Zee Aflam', 7, 'Movies'))
+    manager2.addChannel(new TVChannel(3, 'Russia Today', 5, 'News'))
+    manager2.addChannel(new TVChannel(4, 'CBC', 3, 'News'))
+    manager2.addChannel(new TVChannel(5, 'Bein', 9, 'Sports'))
+    manager2.subscribeChannel(1)
+    manager2.subscribeChannel(2)
+    manager2.subscribeChannel(3)
+    expect(manager2.nextSubscribedChannel(1))
+        .toBe(2)
+})
+test('Test nextSubscribedChannel Function', () => {
+    let manager2 = new ChannelManager()
+    let check = true
+    try {
+        manager2.nextSubscribedChannel(3)
+    } catch {
+        check = false
+    }
+    expect(check)
+        .toBe(false)
+})
+
+//==========================================================================================
+// previousSubscribedChannel
+//==========================================================================================
+test('Test previousSubscribedChannel Function', () => {
+    let manager2 = new ChannelManager()
+    manager2.addChannel(new TVChannel(1, 'M+', 1, 'Music'))
+    manager2.addChannel(new TVChannel(2, 'Zee Aflam', 7, 'Movies'))
+    manager2.addChannel(new TVChannel(3, 'Russia Today', 5, 'News'))
+    manager2.addChannel(new TVChannel(4, 'CBC', 3, 'News'))
+    manager2.addChannel(new TVChannel(5, 'Bein', 9, 'Sports'))
+    manager2.subscribeChannel(1)
+    manager2.subscribeChannel(2)
+    manager2.subscribeChannel(3)
+    expect(manager2.previousSubscribedChannel(3))
+        .toBe(2)
+})
+test('Test previousSubscribedChannel Function', () => {
+    let manager2 = new ChannelManager()
+    manager2.addChannel(new TVChannel(1, 'M+', 1, 'Music'))
+    manager2.addChannel(new TVChannel(2, 'Zee Aflam', 7, 'Movies'))
+    manager2.addChannel(new TVChannel(3, 'Russia Today', 5, 'News'))
+    manager2.addChannel(new TVChannel(4, 'CBC', 3, 'News'))
+    manager2.addChannel(new TVChannel(5, 'Bein', 9, 'Sports'))
+    manager2.subscribeChannel(1)
+    manager2.subscribeChannel(2)
+    manager2.subscribeChannel(3)
+    expect(manager2.previousSubscribedChannel(1))
+        .toBe(3)
+})
+
+test('Test previousSubscribedChannel Function', () => {
+    let manager2 = new ChannelManager()
+    let check = true
+    try {
+        manager2.previousSubscribedChannel(3)
+    } catch {
+        check = false
+    }
+    expect(check)
+        .toBe(false)
+})
+
