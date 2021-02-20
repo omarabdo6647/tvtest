@@ -33,7 +33,12 @@ class ChannelManager {
     // Remove a channel from the management system.  If the channel does not exist, the
     // method will throw a ChannelNotFound exception.
     deleteChannel = chNum => {
-      
+        let foundChannel = this.#allChannels.find((x) => x.channel == chNum)
+        if (!foundChannel)
+            throw new Error('ChannelNotFound')
+        this.#allChannels = this.#allChannels.filter((x) => x.channel !== chNum)
+        return this.#allChannels
+        // this.#allChannels.splice(ch)
     }
 
     // Returns the number of channels.
